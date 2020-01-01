@@ -1,6 +1,6 @@
 # Tuned
 
-Have you ever wondered what your favorite songs look like? Tuned allows users to see what music looks like by generating animations for the different range of frequencies from a specific song.  
+Tuned allows users to see what music looks like by generating animations for the different range of frequencies from a specific song.  
 
 ## MVP
 
@@ -15,6 +15,11 @@ Users will be able to:
 Tuned is implemented with the following technologies:
 * JavaScript for rendering & animation logic
 * Canvas to create 2d drawings 
-* Fast Fourier Transform algorithm to analyze waveforms  
+* Web Audio API to extract data from audio content
 
+## Implementation Timeline
+
+* Day 1
+  * Research Web Audio API & review canvas lecture/readings.
+  * Setup html and canvas boilerplate.
 
