@@ -6,13 +6,12 @@
   <title>Tuned</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
   <script src="script.js" charset="utf-8"></script>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  </link>
-  <link rel="icon" type="image/png" href="favicon.ico">
+  <link href="style.css" rel="stylesheet" type="text/css"></link>
+  <link rel="icon" type="image/png" href="tuned_favicon.png">
 </head>
 
 <body>
-  <div class="modal">
+  <!-- <div class="modal">
     <div class="opening">
       <h1>TUNED</h1>
       <div class="text">
@@ -29,7 +28,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> -->
   <nav class="nav">
 
     <div class="button sample"><a>play sample track</a></div>
@@ -43,24 +42,26 @@
     <aside class="options">
       <div class="options-header">options</div>
       <ul class="options-list">
-        <li>color
+        <!-- <li>color
           <div class="color">
             <div class="rainbow"></div>
             <a class="cycle">cycle colors</a>
           </div>
-        </li>
+        </li> -->
 
         <li>visualization
           <div class="visualization">
             <a id="circles" class="selected">circles</a>
-            <a id="oscillo">oscilloscope</a>
+            <a id="barGraph">bar graph</a>
             <a></a>
           </div>
         </li>
       </ul>
     </aside>
   </nav>
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas">
+    
+  </canvas>
 </body>
 
 </html>

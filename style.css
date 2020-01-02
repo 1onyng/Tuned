@@ -22,8 +22,6 @@ li {
   margin: 0;
 }
 
-
-
 .play {
     display:inline-block;
     margin:5px;
@@ -82,11 +80,11 @@ p:hover {
 }
 
 #canvas {
-  background-color: transparent;
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .fileinput {
@@ -160,44 +158,6 @@ p:hover {
   display:none;
 }
 
-.rainbow {
-  height: 20px;
-  width: 120px;
-  overflow: hidden;
-  background: red; /* not working, let's see some red */
-  opacity: .3;
-    background: -moz-linear-gradient( left ,
-        rgba(255, 0, 0, 1) 0%,
-        rgba(255, 255, 0, 1) 15%,
-        rgba(0, 255, 0, 1) 30%,
-        rgba(0, 255, 255, 1) 50%,
-        rgba(0, 0, 255, .25) 65%,
-        rgba(255, 0, 255, .05) 80%,
-        rgba(255, 255, 255, 0) 100%);
-    background: -webkit-gradient(linear,  left top,  right bottom,
-        color-stop(0%, rgba(255, 0, 0, 1)),
-        color-stop(15%, rgba(255, 255, 0, 1)),
-        color-stop(30%, rgba(0, 255, 0, 1)),
-        color-stop(50%, rgba(0, 255, 255, 1)),
-        color-stop(65%, rgba(0, 0, 255, .25)),
-        color-stop(80%, rgba(255, 0, 255, .05)),
-        color-stop(100%, rgba(255, 255, 255, 0)));
-}
-
-.rainbow:hover {
-  opacity: .65;
-}
-
-.color {
-  padding: 5px;
-  height: 70px;
-  width: 130px;
-}
-
-.color:hover .rainbow {
-  opacity: .6;
-}
-
 .options a {
   line-height: 30px;
   margin-right: 20px;
@@ -209,13 +169,6 @@ p:hover {
 
 .options a:active {
   color: #00688B;;
-}
-
-.cycle {
-  display: block;
-  font-size: 12px;
-  padding: 3px;
-  margin: 8px;
 }
 
 .visualization a {
