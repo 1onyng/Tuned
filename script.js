@@ -22,7 +22,7 @@ window.onload = function () {
   });
 
   sample.addEventListener('click', function () {
-    audio = new Audio('gagging_order.mp3');
+    audio = new Audio('delight.mp3');
     setupAudio();
   });
 

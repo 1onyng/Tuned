@@ -9,9 +9,9 @@ a {
   color: #555;
 }
 
-a:active {
+/* a:active {
   color: #00688B;
-}
+} */
 
 html {
   font-family: 'Lato', sans-serif;
@@ -68,10 +68,10 @@ p:hover {
   border: 1px solid #555;
 }
 
-.button a:active {
+/* .button a:active {
   color: #00688B;
   border: 1px solid #00688B;
-}
+} */
 
 #canvas {
   position: fixed;
@@ -214,7 +214,7 @@ p:hover {
 
 .opening h1 {
   margin: 0 auto;
-  margin-left: 135px;
+  margin-left: 140px;
   padding-bottom: 10px;
 }
 
