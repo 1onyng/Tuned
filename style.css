@@ -203,10 +203,21 @@ p:hover {
 }
 
 .contact {
+  display:flex;
+  justify-content: space-between;
   position: absolute;
-  right: 200px;
+  right: 250px;
   top: 15px;
+  
+}
+
+.contact-item {
+  width: 10%;
   color: white;
+}
+
+.contact-item:hover {
+  color: #555;
 }
 
 .modal {
@@ -261,9 +272,9 @@ p:hover {
   display: block;
 }
 
-.opening a:hover {
+/* .opening a:hover {
   color: darkturquoise;
-}
+} */
 
 .close {
   width: 93%;
