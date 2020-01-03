@@ -1,6 +1,6 @@
 # Tuned
 
-Tuned allows users to see what music looks like by generating animations for the different range of frequencies from a specific song.  
+Tuned allows users to view visual representations of music by generating animations for the different range of frequencies from a specific song.  
 
 ## MVP
 

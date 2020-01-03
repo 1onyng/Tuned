@@ -1,14 +1,3 @@
-/* header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 10%;
-}
-
-.logo {
-  cursor: pointer;
-} */
-
 ul {
   margin-top: 10px;
   padding: 0;
@@ -19,7 +8,6 @@ a {
   text-decoration: none;
   color: #555;
 }
-
 
 a:active {
   color: #00688B;
@@ -34,33 +22,20 @@ li {
 }
 
 .play {
-    display:inline-block;
-    margin:5px;
-    width: 24px;
-    height: 32px;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAgCAYAAAAIXrg4AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMZJREFUeNq0lt0NgzAMhIPlfWAR1BXYpDBSxSCFiYr70CqKUH6cO0t+SEC++xxkIvP8eFuOgRRiOVkeJvJkCAxW+BOtD8tl318nkiAOOE1KENA0knkGockRQGik8j03TS2Bm0YcbW2i8RA00UjnZ16k6SUo0ghw7NzSIAluaSRw4k/DEqCcQdqiyVq0KaH4+i38WyjjYONNZbhGChRHhTJc9wo0jWtluPYIuH+ZynBdKwC5tijDdU4AfnVUhutUAO46jkuAAQD+jXZOTODXVwAAAABJRU5ErkJggg==);
-    text-indent:-200px;
-    opacity: .4;
-}
+  display:inline-block;
+  margin:5px;
+  opacity: .4;
+} 
 
-body {
-  background-color: #bbb;
-}
+.pause {
+  display:inline-block;
+  margin:5px;
+  opacity: .4;
+} 
 
-.stop {
-    display:inline-block;
-    margin:5px;
-    width: 32px;
-    height: 32px;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACxJREFUeNrszUERAAAEADD0c/q3UYLfVmDZPfGp4plAIBAIBAKBQCC4sgIMAJggASlttpE8AAAAAElFTkSuQmCC);
-    text-indent:-200px;
-    opacity: .4;
-}
 p:hover {
-    cursor:pointer;
-    opacity:0.8;
+  cursor:pointer;
+  opacity:0.8;
 }
 .button a {
   display: block;
@@ -117,7 +92,7 @@ p:hover {
 }
 
 .sample a{
-  margin-top: 20px;
+  margin-top: 19px;
 }
 .inputfile {
 	width: 0.1px;
@@ -159,18 +134,6 @@ p:hover {
   border-top: 1px solid white;
 }
 
-/* .options li:hover {
-  color: #555;
-} */
-
-/* .options-header:hover {
-  color: #555;
-} */
-
-/* .options-header:active {
-  color: #00688B;
-} */
-
 .hiding {
   display:none;
 }
@@ -180,13 +143,9 @@ p:hover {
   margin-right: 12px;
 }
 
-/* .options li a:hover {
-  background-color: rgba(255,255,255, .5);
-} */
-
-.options a:active {
+/* .options a:active {
   color: #00688B;;
-}
+} */
 
 .visualization a {
   display: block;
@@ -200,6 +159,7 @@ p:hover {
 .controls {
   padding-top: 10px;
   margin-left: 10px;
+  color: #555;
 }
 
 .contact {
@@ -208,7 +168,6 @@ p:hover {
   position: absolute;
   right: 250px;
   top: 15px;
-  
 }
 
 .contact-item {
@@ -223,14 +182,20 @@ p:hover {
 .modal {
   position: absolute;
   width: 100%;
-  background-color: rgba(255,255,255, .6);
   top: 0;
   left: 0;
   height: 100%;
   z-index: 1000;
   font-family: 'Lato';
 }
-.help {
+.about {
+  position: absolute;
+  left: 350px;
+  top: 13px;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
   color: white;
 }
 
@@ -239,9 +204,8 @@ p:hover {
   width: 25%;
   margin: 50px auto;
   padding: 25px;
-  background-color: rgba(255,255,255, .5);
-  color: #555;
-    position: relative;
+  color: white;
+  position: relative;
 }
 
 .opening .text{
@@ -250,10 +214,8 @@ p:hover {
 
 .opening h1 {
   margin: 0 auto;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  padding-left: -20px;
-  padding-right: -20px;
+  margin-left: 135px;
+  padding-bottom: 10px;
 }
 
 .opening li {
@@ -264,21 +226,21 @@ p:hover {
 .opening .buttons {
   margin: 0 auto;
 }
+
 .opening a {
   margin-top: 30px;
-  background-color: white;
+  background-color:#555;
+  color: white;
   padding: 5px 10px;
   margin: 5px;
   display: block;
+  border: 3px solid white;
 }
-
-/* .opening a:hover {
-  color: darkturquoise;
-} */
 
 .close {
   width: 93%;
   margin-left: 30px;
+  cursor: pointer;
 }
 
 .close a {
@@ -299,4 +261,17 @@ p:hover {
 
 .opening li.personal {
   margin-left: 20px;
+}
+
+.logo {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  width:45px;
+  height:45px;
+  left: 80px;
 }

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset=utf-8 />
-  <title>Tuned</title>
+  <title>TUNED</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
   <script src="script.js" charset="utf-8"></script>
   <script src="https://kit.fontawesome.com/88a7931b59.js" crossorigin="anonymous"></script>
@@ -12,16 +12,35 @@
 </head>
 
 <body>
+  <div class="modal">
+    <div class="opening">
+      <div class="logo">
+        <img class="icon" src="tuned_favicon.png">
+        <h1>TUNED</h1>
+      </div>
+      <div class="text">
+        <p> This is an audio visualizer developed with Web Audio API.</p>
+        <p> Select a track from a local source by clicking the UPLOAD TRACK button or click PLAY SAMPLE to play a preloaded track.</p>
+        <p> Toggle between different visualizations by clicking "star" or "bar graph" on the right.</p>
+        <p> Click ABOUT to return to this page.</p>
+      </div>
+      <div class="buttons">
+        <ul>
+          <li class="close"><a>GOT IT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <nav class="nav">
     <input type="file" name="audiofile" id="audiofile" class="inputfile" />
     <label for="audiofile" class="button fileinput"><a>Upload track</a></label> 
     <div class="sample">
       <div class="button sample"><a>play sample</a></div>
     </div>
+    <p class="about">about</p>
     <div class="controls">
-      <p class="play"></p>
-      <p class="stop"></p>
-      <!-- <p class="help">?</p> -->
+      <p class="play"><i class="fas fa-play fa-lg"></i></p>
+      <p class="pause"><i class="fas fa-pause fa-lg"></i></p>
     </div>
     <div class="contact">
       <a class="contact-item" href="https://github.com/1onyng" >

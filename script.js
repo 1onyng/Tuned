@@ -22,9 +22,7 @@ window.onload = function () {
   });
 
   sample.addEventListener('click', function () {
-    // audio = new Audio('https://s3.us-east-2.amazonaws.com/sparkify2019/whatsgoing/1.mp3');
     audio = new Audio('gagging_order.mp3');
-    // audio.crossOrigin = "anonymous";
     setupAudio();
   });
 
@@ -42,7 +40,7 @@ window.onload = function () {
     });
   }
   document.getElementsByClassName('play')[0].addEventListener('click', playSound.bind(null, source));
-  document.getElementsByClassName('stop')[0].addEventListener('click', stopSound);
+  document.getElementsByClassName('pause')[0].addEventListener('click', pauseSound);
 
   function playSound() {
     if (audioCtx) {
@@ -52,7 +50,7 @@ window.onload = function () {
     }
   }
 
-  function stopSound() {
+  function pauseSound() {
     if (audioCtx) {
       if (audioCtx.state === 'running') {
         audioCtx.suspend();
@@ -164,15 +162,16 @@ window.onload = function () {
   starButton.addEventListener("click", function () {
     display = "star";
   })
-  // let question = document.getElementsByClassName('help')[0];
-  // let closeButton = document.getElementsByClassName('close')[0];
-  // let modal = document.getElementsByClassName('modal')[0];
 
-  // closeButton.addEventListener("click", function () {
-  //   modal.classList.add("closed");
-  // })
+  let about = document.getElementsByClassName('about')[0];
+  let closeButton = document.getElementsByClassName('close')[0];
+  let modal = document.getElementsByClassName('modal')[0];
 
-  // question.addEventListener("click", function () {
-  //   modal.classList.remove("closed");
-  // })
+  closeButton.addEventListener("click", function () {
+    modal.classList.add("closed");
+  })
+
+  about.addEventListener("click", function () {
+    modal.classList.remove("closed");
+  })
 };
