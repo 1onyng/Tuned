@@ -6,61 +6,44 @@
   <title>Tuned</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
   <script src="script.js" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/88a7931b59.js" crossorigin="anonymous"></script>
   <link href="style.css" rel="stylesheet" type="text/css"></link>
   <link rel="icon" type="image/png" href="tuned_favicon.png">
 </head>
 
 <body>
-  <!-- <div class="modal">
-    <div class="opening">
-      <h1>TUNED</h1>
-      <div class="text">
-        <p> This is an audio visualization demo built with the Web Audio API.</p>
-        <p> An [options] button to the right opens a dropdown to select different display options, including a
-          colorpicker, and cycling through colors or visualizations.</p>
-        <p> Click on the ? on the left at any time to return to this page.</p>
-      </div>
-      <div class="buttons">
-        <ul>
-          <li class="github"><a href="http://www.github.com/1onyng">github repo</a></li>
-          <li class="personal"><a href="http://www.tonyng.com">personal site</a></li>
-          <li class="close"><a>CONTINUE</a></li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
+  <!-- <header>
+    <img class="logo" src="tuned_favicon.png" alt="logo">
+  </header> -->
   <nav class="nav">
-
-    <div class="button sample"><a>play sample track</a></div>
     <input type="file" name="audiofile" id="audiofile" class="inputfile" />
-    <label for="audiofile" class="button fileinput"><a>Choose a file</a></label>
+    <label for="audiofile" class="button fileinput"><a>Upload track</a></label> 
+    <div class="sample">
+      <div class="button sample"><a>play sample</a></div>
+    </div>
     <div class="controls">
       <p class="play"></p>
       <p class="stop"></p>
-      <p class="help">?</p>
+      <!-- <p class="help">?</p> -->
+    </div>
+    <div class="contact">
+      <i class="fab fa-github fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+      <i class="fas fa-envelope-square fa-2x"></i>
     </div>
     <aside class="options">
-      <div class="options-header">options</div>
+      <div class="options-header">visualization</div>
       <ul class="options-list">
-        <!-- <li>color
-          <div class="color">
-            <div class="rainbow"></div>
-            <a class="cycle">cycle colors</a>
-          </div>
-        </li> -->
-
-        <li>visualization
+        <li>
           <div class="visualization">
-            <a id="circles" class="selected">circles</a>
+            <a id="star" class="selected">star</a>
             <a id="barGraph">bar graph</a>
-            <a></a>
           </div>
         </li>
       </ul>
     </aside>
   </nav>
   <canvas id="canvas">
-    
   </canvas>
 </body>
 

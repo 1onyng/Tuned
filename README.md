@@ -7,8 +7,8 @@ Tuned allows users to see what music looks like by generating animations for the
 Users will be able to:
 * Play their own songs
 * Play a sample
-* Adjust the color/style of the visualization
-* See a detailed report of the frequency spectrum and its amplitude
+* View frequency spectrum visualization for a specific song
+* Toggle between different animations
 
 ## Architecture and Technologies
 
@@ -22,4 +22,16 @@ Tuned is implemented with the following technologies:
 * Day 1
   * Research Web Audio API & review canvas lecture/readings.
   * Setup html and canvas boilerplate.
+  * Create modal with instructions on how to use project
+
+* Day 2
+  * Implement Star animation
+  * Add play/pause functionality
+  * Add file input to load local audio source
+
+* Day 3
+  * Implement Bar Graph animation
+  * Add sample track button
+  * Post github & linkedin links
+  * Host on live server
 

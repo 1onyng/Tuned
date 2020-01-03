@@ -9,7 +9,7 @@ window.onload = function () {
     freqArray,
     stream;
 
-  let display = "circles";
+  let display = "star";
   let audioInput = document.getElementById('audiofile');
   let sample = document.getElementsByClassName('sample')[0];
 
@@ -60,7 +60,7 @@ window.onload = function () {
     }
   }
 
-  function drawCircle(ctx, freqArray, analyser, width, height) {
+  function drawStar(ctx, freqArray, analyser, width, height) {
     let centerX = width / 2,
       centerY = height / 2,
       radius = 150,
@@ -138,8 +138,8 @@ window.onload = function () {
     bufferLength = analyser.frequencyBinCount;
     freqArray = new Uint8Array(bufferLength);
 
-    if (display === "circles") {
-      drawCircle(ctx, freqArray, analyser, width, height);
+    if (display === "star") {
+      drawStar(ctx, freqArray, analyser, width, height);
     } else if (display === "barGraph") {
       drawBarGraph(ctx, freqArray, bufferLength, analyser, width, height);
     }
@@ -155,14 +155,14 @@ window.onload = function () {
   })
 
   let barGraphButton = document.getElementById('barGraph');
-  let circlesButton = document.getElementById('circles');
+  let starButton = document.getElementById('star');
 
   barGraphButton.addEventListener("click", function () {
     display = "barGraph";
   });
 
-  circlesButton.addEventListener("click", function () {
-    display = "circles";
+  starButton.addEventListener("click", function () {
+    display = "star";
   })
   // let question = document.getElementsByClassName('help')[0];
   // let closeButton = document.getElementsByClassName('close')[0];

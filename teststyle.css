@@ -1,13 +1,19 @@
 /* header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 30px 10%;
-}
-
-.logo {
-  cursor: pointer;
 } */
+
+/* img.resize {
+  max-width:100%;
+  height:auto;
+} */
+
+.nav-links li{
+  display: inline-block;
+  padding: 0px 20px;
+} 
 
 ul {
   margin-top: 10px;
@@ -44,10 +50,6 @@ li {
     opacity: .4;
 }
 
-body {
-  background-color: #bbb;
-}
-
 .stop {
     display:inline-block;
     margin:5px;
@@ -72,16 +74,8 @@ p:hover {
   letter-spacing: 3px;
   font-size: 12px;
   border: white 1px solid;
-  margin-left: 15px;
   background-color: transparent;
   cursor: pointer;
-}
-
-.sample {
-  position: absolute;
-  left: 85px;
-  top: 0px;
-  white-space: nowrap;
 }
 
 .button {
@@ -130,7 +124,7 @@ p:hover {
 
 .options {
   display: block;
-  padding: 20px 20px;
+  padding: 5px 10px;
   max-width: 133px;
   color: white;
   font-family: 'Lato', sans-serif;
@@ -198,15 +192,7 @@ p:hover {
 }
 
 .controls {
-  padding-top: 10px;
-  margin-left: 10px;
-}
-
-.contact {
-  position: absolute;
-  right: 200px;
-  top: 15px;
-  color: white;
+  padding-top: 20px;
 }
 
 .modal {
