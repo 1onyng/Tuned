@@ -4,14 +4,38 @@ window.onload = function () {
     audioCtx,
     canvas,
     gradient,
+    node,
     source,
     bufferLength,
     freqArray,
-    stream;
+    stream, 
+    transparency;
 
   let display = "star";
   let audioInput = document.getElementById('audiofile');
   let sample = document.getElementsByClassName('sample')[0];
+  let micInput = document.getElementById('waves');
+  var hue = hue || 280;
+
+  const error = function() {
+    console.log(arguments)
+  }
+
+  canvas = document.getElementById('canvas'),
+    width = canvas.width = window.innerWidth,
+    height = canvas.height = window.innerHeight,
+    ctx = canvas.getContext('2d');
+
+  gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
+  gradient.addColorStop(1, "rgba(0, 100, 0, 1)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  micInput.addEventListener('click', function () {
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia({ audio: true }, setupStream, error)
+  });
 
   audioInput.addEventListener('change', function (event) {
     if (!audioCtx || audioCtx.state !== "running") {
@@ -27,7 +51,7 @@ window.onload = function () {
   });
 
   function setupAudio() {
-    audio.addEventListener('canplay', function () {
+    audio.addEventListener('canplay', function() {
       audioCtx = new AudioContext();
       analyser = audioCtx.createAnalyser();
       analyser.smoothingTimeConstant = 0.1;
@@ -39,23 +63,18 @@ window.onload = function () {
       animate();
     });
   }
-  document.getElementsByClassName('play')[0].addEventListener('click', playSound.bind(null, source));
-  document.getElementsByClassName('pause')[0].addEventListener('click', pauseSound);
 
-  function playSound() {
-    if (audioCtx) {
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-    }
-  }
-
-  function pauseSound() {
-    if (audioCtx) {
-      if (audioCtx.state === 'running') {
-        audioCtx.suspend();
-      }
-    }
+  function setupStream(stream) {
+    audioCtx = new AudioContext();
+    analyser = audioCtx.createAnalyser();
+    analyser.smoothingTimeConstant = 0.2;
+    analyser.fftSize = 1024;
+    node = audioCtx.createScriptProcessor(1024, 1, 1);
+    source = audioCtx.createMediaStreamSource(stream);
+    source.connect(analyser);
+    analyser.connect(node);
+    analyser.connect(audioCtx.destination);
+    animate();
   }
 
   function drawStar(ctx, freqArray, analyser, width, height) {
@@ -71,6 +90,7 @@ window.onload = function () {
     ctx.stroke();
 
     analyser.getByteFrequencyData(freqArray);
+
     for (let i = 0; i < bars; i++) {
       let rads = Math.PI * 2 / bars;
       let lineColor = "rgb(" + freqArray[i] + ", " + freqArray[i] + ", " + 205 + ")";
@@ -102,10 +122,6 @@ window.onload = function () {
     for (let i = 0; i < bufferLength; i++) {
       barHeight = freqArray[i] * 1.5;
 
-      let r = barHeight + (25 * (i / bufferLength));
-      let g = 250 * (i / bufferLength);
-      let b = 50;
-
       ctx.fillStyle = "rgb(" + freqArray[i] + ", " + freqArray[i] + ", " + 205 + ")";
       ctx.fillRect(x, height - barHeight, barWidth, barHeight);
 
@@ -113,16 +129,33 @@ window.onload = function () {
     }
   }
 
-  canvas = document.getElementById('canvas'),
-  width = canvas.width = window.innerWidth,
-  height = canvas.height = window.innerHeight,
-  ctx = canvas.getContext('2d');
+  function drawWaves(ctx, freqArray, bufferLength, analyser, width, height) {
+    analyser.getByteFrequencyData(freqArray);
 
-  gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
-  gradient.addColorStop(1, "rgba(0, 100, 0, 1)");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "rgb(0, 0, 205)";
+
+    ctx.beginPath();
+    let sliceWidth = width * 1.0 / bufferLength;
+    let x = 0;
+
+    for (let i = 0; i < bufferLength; i++) {
+
+      let v = freqArray[i] / 86.0;
+      let y = v * 200 / 2;
+
+      if (i === 0) {
+        ctx.moveTo(x, (y + height / 2));
+      } else {
+        ctx.lineTo(x, (y + height / 2));
+      }
+
+      x += sliceWidth;
+    }
+
+    ctx.lineTo(canvas.width, canvas.height / 2);
+    ctx.stroke();
+  }
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
@@ -140,20 +173,44 @@ window.onload = function () {
       drawStar(ctx, freqArray, analyser, width, height);
     } else if (display === "barGraph") {
       drawBarGraph(ctx, freqArray, bufferLength, analyser, width, height);
+    } else if (display === "waves") {
+      drawWaves(ctx, freqArray, bufferLength, analyser, width, height);
     }
 
     requestAnimationFrame(animate);
   }
 
-  let options = document.getElementsByClassName('options-header')[0];
+  // let options = document.getElementsByClassName('options-header')[0];
 
-  options.addEventListener("click", function () {
-    let accordion = document.getElementsByClassName('options-list')[0];
-    accordion.classList.toggle("hiding");
-  })
+  // options.addEventListener("click", function () {
+  //   let accordion = document.getElementsByClassName('options-list')[0];
+  //   accordion.classList.toggle("hiding");
+  // })
+  document.getElementsByClassName('play')[0].addEventListener('click', playSound.bind(null, source));
+  document.getElementsByClassName('pause')[0].addEventListener('click', pauseSound);
+
+  function playSound() {
+    if (audioCtx) {
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+  }
+
+  function pauseSound() {
+    if (audioCtx) {
+      if (audioCtx.state === 'running') {
+        audioCtx.suspend();
+      }
+    }
+  }
 
   let barGraphButton = document.getElementById('barGraph');
   let starButton = document.getElementById('star');
+  let wavesButton = document.getElementById('waves');
+  let about = document.getElementsByClassName('about')[0];
+  let closeButton = document.getElementsByClassName('close')[0];
+  let modal = document.getElementsByClassName('modal')[0];
 
   barGraphButton.addEventListener("click", function () {
     display = "barGraph";
@@ -163,9 +220,9 @@ window.onload = function () {
     display = "star";
   })
 
-  let about = document.getElementsByClassName('about')[0];
-  let closeButton = document.getElementsByClassName('close')[0];
-  let modal = document.getElementsByClassName('modal')[0];
+  wavesButton.addEventListener("click", function () {
+    display = "waves";
+  })
 
   closeButton.addEventListener("click", function () {
     modal.classList.add("closed");

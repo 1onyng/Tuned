@@ -15,13 +15,14 @@
   <div class="modal">
     <div class="opening">
       <div class="logo">
-        <img class="icon" src="tuned_favicon.png">
-        <h1>TUNED</h1>
+        <img class="logo-item icon" src="tuned_favicon.png">
+        <h1 class="logo-item header">TUNED</h1>
       </div>
       <div class="text">
         <p> This is an audio visualizer developed with Web Audio API.</p>
-        <p> Select a track from a local source by clicking the UPLOAD TRACK button or click PLAY SAMPLE to play a preloaded track.</p>
-        <p> Toggle between different visualizations by clicking "radial spectrum" or "bar graph" on the right.</p>
+        <p> Select a track from a local source by clicking UPLOAD TRACK or click PLAY SAMPLE to play a preloaded track.</p>
+        <p> Toggle between different visualizations by selecting one on the right.</p>
+        <p> The "mic waves" visual allows you to generate your own waveform via microphone. Wear headphones to avoid feedback.</p>
         <p> Click ABOUT to return to this page.</p>
       </div>
       <div class="buttons">
@@ -60,6 +61,7 @@
           <div class="visualization">
             <a id="star" class="selected">radial spectrum</a>
             <a id="barGraph">bar graph</a>
+            <a id="waves">mic waves</a>
           </div>
         </li>
       </ul>
