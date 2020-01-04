@@ -8,14 +8,12 @@ window.onload = function () {
     source,
     bufferLength,
     freqArray,
-    stream, 
-    transparency;
+    stream;
 
-  let display = "star";
   let audioInput = document.getElementById('audiofile');
   let sample = document.getElementsByClassName('sample')[0];
   let micInput = document.getElementById('waves');
-  var hue = hue || 280;
+  let display = "star";
 
   const error = function() {
     console.log(arguments)
@@ -180,12 +178,6 @@ window.onload = function () {
     requestAnimationFrame(animate);
   }
 
-  // let options = document.getElementsByClassName('options-header')[0];
-
-  // options.addEventListener("click", function () {
-  //   let accordion = document.getElementsByClassName('options-list')[0];
-  //   accordion.classList.toggle("hiding");
-  // })
   document.getElementsByClassName('play')[0].addEventListener('click', playSound.bind(null, source));
   document.getElementsByClassName('pause')[0].addEventListener('click', pauseSound);
 
