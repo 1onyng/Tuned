@@ -1,5 +1,7 @@
 # Tuned
 
+[Live Link](https://1onyng.github.io/Tuned/)
+
 Tuned allows users to view visual representations of music by generating animations for the different range of frequencies from a specific song.  
 
 ## MVP
@@ -33,5 +35,8 @@ Tuned is implemented with the following technologies:
   * Implement Bar Graph animation
   * Add sample track button
   * Post github & linkedin links
+
+  Day 4
+  * Add microphone input and extract its frequency 
   * Host on live server
 
