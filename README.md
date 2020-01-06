@@ -2,14 +2,15 @@
 
 [Live Link](https://1onyng.github.io/Tuned/)
 
-Tuned allows users to view visual representations of music by generating animations for the different range of frequencies from a specific song.  
+Tuned allows users to see what sound looks like by generating animations for the different range of frequencies from either a specific song or microphone input.  
 
 ## MVP
 
 Users will be able to:
 * Play their own songs
-* Play a sample
+* Play a sample track
 * View frequency spectrum visualization for a specific song
+* Genereate their own waveforms via microphone
 * Toggle between different animations
 
 ## Architecture and Technologies
