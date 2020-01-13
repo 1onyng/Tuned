@@ -36,14 +36,14 @@ window.onload = function () {
   });
 
   audioInput.addEventListener('change', function (event) {
-    if (!audioCtx || audioCtx.state !== "running") {
-      stream = URL.createObjectURL(event.target.files[0]);
-      audio = new Audio(stream);
-      setupAudio();
-    }
+    pauseSound();
+    stream = URL.createObjectURL(event.target.files[0]);
+    audio = new Audio(stream);
+    setupAudio();
   });
 
   sample.addEventListener('click', function () {
+    pauseSound();
     audio = new Audio('delight.mp3');
     setupAudio();
   });
