@@ -1,43 +1,83 @@
-# Tuned
+# [TUNED](https://1onyng.github.io/Tuned/)
 
-[Live Link](https://1onyng.github.io/Tuned/)
+## Technologies
+ 
+* Javascript
+* HTML Canvas
+* CSS
+* Web Audio API
 
-Tuned allows users to see what sound looks like by generating animations for the different range of frequencies from either a specific song or microphone input.  
+## Summary
 
-## MVP
+Tuned allows users to see what sound looks like by generating animations for the different ranges of frequencies from either a specific song or microphone input. Users have the ability to:
 
-Users will be able to:
-* Play their own songs
-* Play a sample track
-* View frequency spectrum visualization for a specific song
-* Genereate their own waveforms via microphone
-* Toggle between different animations
+** Play their own song from a local source
+** Play a sample track
+** View frequency spectrum visualization for a specific song
+** Generate their own waveforms via microphone
+** Toggle between different animations
 
-## Architecture and Technologies
+<img src="images/bar_graph.png">
 
-Tuned is implemented with the following technologies:
-* JavaScript for rendering & animation logic
-* Canvas to create 2d drawings 
-* Web Audio API to extract data from audio content
+## Visualizations 
 
-## Implementation Timeline
+Each visualization has its own set of canvas drawings. The radial spectrum visual was the most complicated to draw becausae it required trigonometry to convert to Cartesian coordinates. The most critical part of this project was connecting the audio source to Web Audio API via the AnalyzerNode to eventually capture frequency data used for an animation. The setupAudio function takes care of the connection. The last step was to grab the data, store it an array, and iterate through it to define the shape and color of our visuals:    
 
-* Day 1
-  * Research Web Audio API & review canvas lecture/readings.
-  * Setup html and canvas boilerplate.
-  * Create modal with instructions on how to use project
+```javascript
+  function drawBarGraph(ctx, freqArray, bufferLength, analyser, width, height) {
+    let barWidth = (width / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
 
-* Day 2
-  * Implement Star animation
-  * Add play/pause functionality
-  * Add file input to load local audio source
+    analyser.getByteFrequencyData(freqArray);
 
-* Day 3
-  * Implement Bar Graph animation
-  * Add sample track button
-  * Post github & linkedin links
+    ctx.fillRect(0, 0, width, height);
 
-  Day 4
-  * Add microphone input and extract its frequency 
-  * Host on live server
+    for (let i = 0; i < bufferLength; i++) {
+      barHeight = freqArray[i] * 1.5;
+
+      ctx.fillStyle = "rgb(" + freqArray[i] + ", " + freqArray[i] + ", " + 205 + ")";
+      ctx.fillRect(x, height - barHeight, barWidth, barHeight);
+
+      x += barWidth + 1;
+    }
+  }
+  ```
+
+## Adding the Microphone
+
+Microphone support was included to enhance user experience. Connecting the microphone was a similar process to connecting a song, involving a few other methods that were specific to media devices.  
+
+```javascript
+  micInput.addEventListener('click', function () {
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia({ audio: true }, setupStream, error)
+  });
+```
+
+```javascript
+  function setupStream(stream) {
+    audioCtx = new AudioContext();
+    analyser = audioCtx.createAnalyser();
+    analyser.smoothingTimeConstant = 0.2;
+    analyser.fftSize = 1024;
+    node = audioCtx.createScriptProcessor(1024, 1, 1);
+    source = audioCtx.createMediaStreamSource(stream);
+    source.connect(analyser);
+    analyser.connect(node);
+    analyser.connect(audioCtx.destination);
+    animate();
+  }
+  ```
+
+## Future Implementations
+
+* Allow user to turn mic off
+* Add playlist feature
+* Provide more visualizations
+* Allow user to manipulate / warp animation in real-time
+
+
+
+
 
