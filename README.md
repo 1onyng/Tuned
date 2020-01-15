@@ -11,11 +11,11 @@
 
 Tuned allows users to see what sound looks like by generating animations for the different ranges of frequencies from either a specific song or microphone input. Users have the ability to:
 
-** Play their own song from a local source
-** Play a sample track
-** View frequency spectrum visualization for a specific song
-** Generate their own waveforms via microphone
-** Toggle between different animations
+* Play their own song from a local source
+* Play a sample track
+* View frequency spectrum visualization for a specific song
+* Generate their own waveforms via microphone
+* Toggle between different animations
 
 <img src="images/bar_graph.png">
 
@@ -43,6 +43,7 @@ Each visualization has its own set of canvas drawings. The radial spectrum visua
     }
   }
   ```
+<img src=images/radial_spec.png>
 
 ## Adding the Microphone
 
