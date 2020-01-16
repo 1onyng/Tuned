@@ -9,7 +9,7 @@
 
 ## Summary
 
-Tuned allows users to see what sound looks like by generating animations for the different ranges of frequencies from either a specific song or microphone input. Users have the ability to:
+TUNED allows users to see what sound looks like by generating animations for the different ranges of frequencies from either a specific song or microphone input. Users have the ability to:
 
 * Play their own song from a local source
 * Play a sample track
@@ -47,7 +47,7 @@ Each visualization has its own set of canvas drawings. The radial spectrum visua
 
 ## Microphone
 
-Microphone support was included to enhance user experience. Connecting the microphone was similar to connecting a song, with the exception of other methods that were specific to media devices. Disabling the mic was more challenging. A button was created to act as switch to turn the mic on or off. Clicking the button triggers the toggleMic function, which either creates an audio stream or stops it, depending if one was already created. 
+Microphone support was included to enhance user experience. Connecting the microphone was a similar process to connecting a song, with the exception of a few other methods that were specific to media devices. Disabling the mic was more challenging. A button was created to act as a switch to turn the mic on or off. Clicking the button triggers the toggleMic function, which either creates an audio stream or stops it, depending if one was already created. 
 
 ```javascript
   async function toggleMic() {
