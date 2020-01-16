@@ -85,7 +85,6 @@ Microphone support was included to enhance user experience. Connecting the micro
 
 ## Future Implementations
 
-* Allow user to turn mic off
 * Add playlist feature
 * Provide more visualizations
 * Allow user to manipulate / warp animation in real-time
