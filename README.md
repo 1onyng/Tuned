@@ -45,15 +45,27 @@ Each visualization has its own set of canvas drawings. The radial spectrum visua
   ```
 <img src=images/radial_spec.png>
 
-## Adding the Microphone
+## Microphone
 
-Microphone support was included to enhance user experience. Connecting the microphone was a similar process to connecting a song, involving a few other methods that were specific to media devices.  
+Microphone support was included to enhance user experience. Connecting the microphone was similar to connecting a song, with the exception of other methods that were specific to media devices. Disabling the mic was more challenging. A button was created to act as switch to turn the mic on or off. Clicking the button triggers the toggleMic function, which either creates an audio stream or stops it, depending if one was already created. 
 
 ```javascript
-  micInput.addEventListener('click', function () {
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    navigator.getUserMedia({ audio: true }, setupStream, error)
-  });
+  async function toggleMic() {
+    pauseSound();
+
+    if (inputStream) {
+      tracks = inputStream.getAudioTracks();
+      tracks[0].stop();
+      inputStream = null;
+    } else {
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          inputStream = stream;
+          setupStream(inputStream);
+        });
+    }
+  }
 ```
 
 ```javascript
