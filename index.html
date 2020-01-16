@@ -7,7 +7,8 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
   <script src="script.js" charset="utf-8"></script>
   <script src="https://kit.fontawesome.com/88a7931b59.js" crossorigin="anonymous"></script>
-  <link href="style.css" rel="stylesheet" type="text/css"></link>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  </link>
   <link rel="icon" type="image/png" href="tuned_favicon.png">
 </head>
 
@@ -20,9 +21,11 @@
       </div>
       <div class="text">
         <p> This is an audio visualizer developed with Web Audio API.</p>
-        <p> Select a track from a local source by clicking UPLOAD TRACK or click PLAY SAMPLE to play a preloaded track.</p>
+        <p> Select a track from a local source by clicking UPLOAD TRACK or click PLAY SAMPLE to play a preloaded track.
+        </p>
         <p> Toggle between different visualizations by selecting one on the right.</p>
-        <p> The "mic waves" visual allows you to generate your own waveform via microphone. Wear headphones to avoid feedback.</p>
+        <p> Generate your own visualization via microphone by clicking MIC ON/OFF. Click again to stop the mic. Wear
+          headphones to avoid feedback.</p>
         <p> Click ABOUT to return to this page.</p>
       </div>
       <div class="buttons">
@@ -34,9 +37,12 @@
   </div>
   <nav class="nav">
     <input type="file" name="audiofile" id="audiofile" class="inputfile" />
-    <label for="audiofile" class="button fileinput"><a>Upload track</a></label> 
+    <label for="audiofile" class="button fileinput"><a>Upload track</a></label>
     <div class="sample">
       <div class="button sample"><a>play sample</a></div>
+    </div>
+    <div class="mic">
+      <div class="button mic"><a id="toggle-mic">mic on/off</a></div>
     </div>
     <p class="about">about</p>
     <div class="controls">
@@ -44,10 +50,10 @@
       <p class="pause"><i class="fas fa-pause fa-lg"></i></p>
     </div>
     <div class="contact">
-      <a class="contact-item" href="https://github.com/1onyng" >
+      <a class="contact-item" href="https://github.com/1onyng">
         <i class="fab fa-github fa-2x"></i>
       </a>
-      <a class= "contact-item" href="https://www.linkedin.com/in/tonyng987/">
+      <a class="contact-item" href="https://www.linkedin.com/in/tonyng987/">
         <i class="fab fa-linkedin fa-2x"></i>
       </a>
       <a class="contact-item" href="mailto:tonyng987@gmail.com">
@@ -61,7 +67,7 @@
           <div class="visualization">
             <a id="star" class="selected">radial spectrum</a>
             <a id="barGraph">bar graph</a>
-            <a id="waves">mic waves</a>
+            <a id="waves">waveform</a>
           </div>
         </li>
       </ul>

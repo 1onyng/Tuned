@@ -48,10 +48,10 @@ p:hover {
   cursor: pointer;
 }
 
-.sample {
+.mic {
   position: absolute;
   left: 85px;
-  top: 0px;
+  top: 9.5px;
   white-space: nowrap;
 }
 
@@ -83,7 +83,7 @@ p:hover {
 }
 
 .sample a{
-  margin-top: 19px;
+  margin-top: 10px;
 }
 .inputfile {
 	width: 0.1px;
@@ -177,7 +177,7 @@ p:hover {
 }
 .about {
   position: absolute;
-  left: 350px;
+  left: 330px;
   top: 13px;
   letter-spacing: 3px;
   font-size: 12px;

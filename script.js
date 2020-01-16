@@ -8,16 +8,12 @@ window.onload = function () {
     source,
     bufferLength,
     freqArray,
-    stream;
+    stream,
+    inputStream;
 
   let audioInput = document.getElementById('audiofile');
   let sample = document.getElementsByClassName('sample')[0];
-  let micInput = document.getElementById('waves');
   let display = "star";
-
-  const error = function() {
-    console.log(arguments)
-  }
 
   canvas = document.getElementById('canvas'),
     width = canvas.width = window.innerWidth,
@@ -29,11 +25,6 @@ window.onload = function () {
   gradient.addColorStop(1, "rgba(0, 100, 0, 1)");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  micInput.addEventListener('click', function () {
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    navigator.getUserMedia({ audio: true }, setupStream, error)
-  });
 
   audioInput.addEventListener('change', function (event) {
     pauseSound();
@@ -49,7 +40,7 @@ window.onload = function () {
   });
 
   function setupAudio() {
-    audio.addEventListener('canplay', function() {
+    audio.addEventListener('canplay', function () {
       audioCtx = new AudioContext();
       analyser = audioCtx.createAnalyser();
       analyser.smoothingTimeConstant = 0.1;
@@ -157,7 +148,7 @@ window.onload = function () {
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    
+
     gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
     gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
     gradient.addColorStop(1, "rgba(0, 100, 0, 1)");
@@ -180,6 +171,8 @@ window.onload = function () {
 
   document.getElementsByClassName('play')[0].addEventListener('click', playSound.bind(null, source));
   document.getElementsByClassName('pause')[0].addEventListener('click', pauseSound);
+  document.getElementById('toggle-mic').addEventListener('click', toggleMic);
+
 
   function playSound() {
     if (audioCtx) {
@@ -194,6 +187,23 @@ window.onload = function () {
       if (audioCtx.state === 'running') {
         audioCtx.suspend();
       }
+    }
+  }
+
+  async function toggleMic() {
+    pauseSound();
+
+    if (inputStream) {
+      tracks = inputStream.getAudioTracks();
+      tracks[0].stop();
+      inputStream = null;
+    } else {
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          inputStream = stream;
+          setupStream(inputStream);
+        });
     }
   }
 
@@ -224,3 +234,4 @@ window.onload = function () {
     modal.classList.remove("closed");
   })
 };
+
